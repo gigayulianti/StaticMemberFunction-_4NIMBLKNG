@@ -1,20 +1,35 @@
-#include <iostream>
-using namespace std;
+include <iostream>
+#include <string> //menyertakan library string
+us#ing namespace std;
 
-class Mahasiswa { // membuat class mahasiswa
+class Mahasiswa {
 
+private:
+    static int nim;
 public:
-    static int nim; // deklarasi variabel static yaitu variabel nim
-    int id;         // deklarasi variabel member
+    int id;
     string nama;
 
-    // deklarasi prosedur setID() dan printAll()
     void setID();
     void printAll();
 
-    // pembuatan constructor Mahasiswa dengan parameter pnama
-    Mahasiswa(string pnama) : nama(pnama) {
-        setID();
+    //pembuatan static function
+    static void setNim(int pnim) {
+        nim = pnim;
+    };
+
+    static int getNim() {
+        return nim;
     }
+
+    Mahasiswa(string pnama) :nama(pnama){
+        setID();
+    };
 };
 
+int Mahasiswa::nim = 0;
+
+//pendefinisial prosedur-prosedur diluar class
+void Mahasiswa::setID() {
+    id = ++nim;
+}
